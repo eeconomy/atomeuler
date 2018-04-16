@@ -3,7 +3,10 @@ var app = express()
 var math = require('mathjs')
 
 
+
 console.log("Hello World!")
+console.log('')
+console.log('Welcome to Atom\'s Project Euler App.')
 
 function multiplesOfThreeFive(number){
   //the number we want to check for all nums div by 3 and 5
@@ -52,5 +55,69 @@ console.log('Initial fibNext ='+fibnext)
   }
   console.log("Your final sum is : "+fibsum)
 }
-fibSums();
+
+function largestPrimeFactor(number){
+  var factors = []
+  var primeFactors = []
+  var maxNumber = number
+  var bigPrime = 1
+
+  for(i=2;i<maxNumber;i++){
+    /*if(true){
+      setTimeout(largestPrimeFactor, 1000)
+    }*/
+    var factorChecker = 1
+    factorChecker = maxNumber % i
+    //console.log('Tracking i and it is currently: '+i)
+
+    if(factorChecker == 0){
+      //console.log(i + ' is a facotr of '+maxNumber)
+      factors.push(i)
+      //Checking if the factor is a prime numbers
+      for(j=2;j<=i;j++){
+        //console.log('Tracking j :'+j)
+        var isPrimeCheck = i % j
+        //console.log('isPrimeCheck is: '+isPrimeCheck)
+        if(j==i){
+          //console.log(i+' is a prime number, adding it to the list.')
+          bigPrime = i
+          primeFactors.push(i)
+        }else if(isPrimeCheck ==0){
+          //console.log(i+' is not a prime numbers. Breaking.')
+          break
+        }else {
+          //console.log(i+' may be a prime number, continuing check.')
+          //console.log(j+' is j currently.')
+        }
+
+
+        }
+      }
+
+    }
+
+  console.log('The factors are: '+factors)
+  console.log('The factors that are prime are: '+primeFactors)
+  console.log('The largest Prime Factor is :'+bigPrime)
+}
+/*
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question('What do you think of Node.js? ', (answer) => {
+  // TODO: Log the answer in a database
+  console.log(`Thank you for your valuable feedback: ${answer}`);
+
+  rl.close();
+});
+*/
+var cruncher = largestPrimeFactor(15000)//600851475143)
+cruncher
+//setInterval(cruncher, 100)
+//largestPrimeFactor(600851475143)
+//fibSums();
 //console.log('The answer is : '+multiplesOfThreeFive(1000))
